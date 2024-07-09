@@ -31,13 +31,13 @@ public class StudentController {
     }
 
     @GetMapping("/findById/{id}")
-    public Student  getStudentById(@PathVariable Long id){
+    public Student  getStudentById(@PathVariable String id){
         return studentRepo.findById(id)
         .orElseThrow(()->new StudentNotFoundException(id));
 
     }
     @PutMapping("/update/{id}")
-    Student updateStudent(@RequestBody Student newStudent ,@PathVariable Long id){
+    Student updateStudent(@RequestBody Student newStudent ,@PathVariable String id){
         return studentRepo.findById(id)
                 .map(student -> {
                     student.setName(newStudent.getName());
@@ -48,7 +48,7 @@ public class StudentController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public String deleteById(@PathVariable Long id){
+    public String deleteById(@PathVariable String id){
 
         if(!studentRepo.existsById(id)){
             throw new StudentNotFoundException(id);

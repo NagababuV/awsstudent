@@ -14,6 +14,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
 @NoArgsConstructor
 @AllArgsConstructor
 @Document(collection = "studentdb")
+
 public class Student {
 
 
